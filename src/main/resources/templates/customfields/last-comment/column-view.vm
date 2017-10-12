@@ -1,0 +1,8 @@
+#disable_html_escaping()
+#if ($value)
+  #if (${displayParameters.excel_view})
+    $textutils.br($textutils.htmlEncode($!lastComment.toString(), false))
+  #else
+    $!lastComment.toString()
+  #end
+#end
