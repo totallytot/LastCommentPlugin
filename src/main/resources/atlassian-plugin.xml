@@ -23,5 +23,6 @@
     <resource name="view" type="velocity" location="/templates/customfields/last-comment/view.vm"/>
     <resource name="column-view" type="velocity" location="/templates/customfields/last-comment/column-view.vm"/>
     <resource name="edit" type="velocity" location="/templates/customfields/last-comment/edit.vm"/>
+
   </customfield-type>
 </atlassian-plugin>

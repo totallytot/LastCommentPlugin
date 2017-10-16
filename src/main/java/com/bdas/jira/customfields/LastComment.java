@@ -24,11 +24,6 @@ public class LastComment extends GenericTextCFType {
     }
 
     @Override
-    public boolean isRenderable() {
-        return true;
-    }
-
-    @Override
     public Map<String, Object> getVelocityParameters(final Issue issue,
                                                      final CustomField field,
                                                      final FieldLayoutItem fieldLayoutItem) {
@@ -45,17 +40,17 @@ public class LastComment extends GenericTextCFType {
 
         CommentManager commentManager = ComponentAccessor.getCommentManager();
         Comment comment = commentManager.getLastComment(issue);
-        String lastComment = "";
+
         if (comment != null) {
-            lastComment = comment.getBody();
+            String lastComment = comment.getBody();
             RendererManager rendererManager = ComponentAccessor.getRendererManager();
             JiraRendererPlugin wikiRenderer = rendererManager.getRendererForType("atlassian-wiki-renderer");
             IssueRenderContext renderContext = new IssueRenderContext(issue);
             lastComment = wikiRenderer.render(lastComment, renderContext);
+            map.put("lastComment", lastComment);
         }
-
-        map.put("lastComment", lastComment);
-
         return map;
     }
+
+
 }
